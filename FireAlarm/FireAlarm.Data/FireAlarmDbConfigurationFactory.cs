@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace ExerciseTracker.Data
+namespace FireAlarm.Data
 {
     public class FireAlarmDbConfigurationFactory : IDesignTimeDbContextFactory<FireAlarmDbContext>
     {

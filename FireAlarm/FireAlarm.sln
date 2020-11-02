@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireAlarm.Data", "FireAlarm.Data\FireAlarm.Data.csproj", "{591690E2-991F-4C39-98D3-D7DC8B33247D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireAlarm.DataAccessLayer", "FireAlarm.DataAccessLayer\FireAlarm.DataAccessLayer.csproj", "{D5A26E17-91AF-4D1C-95E4-5D9E1D913104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{591690E2-991F-4C39-98D3-D7DC8B33247D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{591690E2-991F-4C39-98D3-D7DC8B33247D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{591690E2-991F-4C39-98D3-D7DC8B33247D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A26E17-91AF-4D1C-95E4-5D9E1D913104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A26E17-91AF-4D1C-95E4-5D9E1D913104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A26E17-91AF-4D1C-95E4-5D9E1D913104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A26E17-91AF-4D1C-95E4-5D9E1D913104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

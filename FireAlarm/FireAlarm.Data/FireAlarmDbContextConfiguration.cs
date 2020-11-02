@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
-namespace ExerciseTracker.Data
+namespace FireAlarm.Data
 {
     public class FireAlarmDbContextConfiguration
     {

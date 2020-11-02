@@ -6,7 +6,7 @@ using FireAlarm.Data;
 using FireAlarm.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExerciseTracker.Data
+namespace FireAlarm.Data
 {
     public class FireAlarmDbContext : DbContext
     {
