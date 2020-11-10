@@ -1,3 +1,8 @@
+using System.Threading.Tasks;
+using AutoMapper;
+using FireAlarm.API.DTOs;
+using FireAlarm.API.Models;
+using FireAlarm.Data.Entities;
 using FireAlarm.DataAccessLayer.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 

@@ -18,11 +18,6 @@
       <ProjectReference Include="..\FireAlarm.DataAccessLayer\FireAlarm.DataAccessLayer.csproj" />
       <ProjectReference Include="..\FireAlarm.Data\FireAlarm.Data.csproj" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="DTOs" />
-      <Folder Include="Models" />
-    </ItemGroup>
 
 
 </Project>
