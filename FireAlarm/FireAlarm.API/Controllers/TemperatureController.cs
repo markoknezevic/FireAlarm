@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using FireAlarm.API.DTOs;
+using FireAlarm.API.Helpers;
 using FireAlarm.API.Models;
 using FireAlarm.Data.Entities;
 using FireAlarm.DataAccessLayer.UnitOfWork;
@@ -12,7 +13,12 @@ namespace FireAlarm.API.Controllers
     [Route("api/[controller]")]
     public class TemperatureController : BaseController<TemperatureController>
     {
-        public TemperatureController(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+        private readonly MailSender _mailSender;
+
+        public TemperatureController(IUnitOfWork unitOfWork, MailSender mailSender) : base(unitOfWork)
+        {
+            _mailSender = mailSender;
+        }
         
         public async Task<ActionResult> Post([FromBody] AddTemperaturePostObject addTemperaturePostObject)
         {
@@ -30,7 +36,7 @@ namespace FireAlarm.API.Controllers
 
             if (addTemperaturePostObject.Value > sensor.TriggerTemperature)
             {
-                // TODO: Trigger email
+                _mailSender.SendEmail(sensor.UserEmail);
             }
             var result = await UnitOfWork.TemperaturesRepository.AddTemperatureAsync(new Temperature()
             {
