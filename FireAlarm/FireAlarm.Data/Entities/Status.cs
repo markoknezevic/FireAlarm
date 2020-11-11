@@ -7,11 +7,9 @@ namespace FireAlarm.Data.Entities
 {
     public enum Statuses : short
     {
-        [DisplayName("Undefined")] Undefined = 1,
+        [DisplayName("Undefined")] Active = 1,
 
-        [DisplayName("Active")] Active = 2,
-
-        [DisplayName("Inactive")] Inactive = 3
+        [DisplayName("Active")] Inactive = 2,
     }
 
     [Table("statuses")]

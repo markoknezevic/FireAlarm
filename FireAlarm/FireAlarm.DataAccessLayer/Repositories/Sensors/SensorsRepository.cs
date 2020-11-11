@@ -16,9 +16,41 @@ namespace FireAlarm.DataAccessLayer.Repositories.Sensors
         
         public async Task<Sensor> GetSensorByIdAsync(long? sensorId)
         {
-            var sensor = await _fireAlarmDbContext.Sensors.FirstOrDefaultAsync((s => s.Id == sensorId));
+            var sensor = await _fireAlarmDbContext.Sensors.FirstOrDefaultAsync(s => s.Id == sensorId);
 
             return sensor;
+        }
+
+        public async Task<bool> ActivateSensorAsync(long sensorId)
+        {
+            var sensor = await _fireAlarmDbContext.Sensors.FirstOrDefaultAsync(s => s.Id == sensorId);
+
+            sensor.StatusId = (short) Data.Entities.Statuses.Active;
+
+            var result = await _fireAlarmDbContext.SaveChangesAsync();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+        public async Task<bool> DeactivateSensorAsync(long sensorId)
+        {
+            var sensor = await _fireAlarmDbContext.Sensors.FirstOrDefaultAsync(s => s.Id == sensorId);
+
+            sensor.StatusId = (short) Data.Entities.Statuses.Inactive;
+
+            var result = await _fireAlarmDbContext.SaveChangesAsync();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

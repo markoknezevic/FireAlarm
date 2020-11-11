@@ -20,6 +20,7 @@ namespace FireAlarm.API.Controllers
             _mailSender = mailSender;
         }
         
+        [HttpPost]
         public async Task<ActionResult> Post([FromBody] AddTemperaturePostObject addTemperaturePostObject)
         {
             if (!ModelState.IsValid)
@@ -32,10 +33,10 @@ namespace FireAlarm.API.Controllers
             {
                 return BadRequest();
             }
-
-
+            
             if (addTemperaturePostObject.Value > sensor.TriggerTemperature)
             {
+                await UnitOfWork.SensorsRepository.DeactivateSensorAsync(sensor.Id);
                 _mailSender.SendEmail(sensor.UserEmail);
             }
             var result = await UnitOfWork.TemperaturesRepository.AddTemperatureAsync(new Temperature()

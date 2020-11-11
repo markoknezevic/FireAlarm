@@ -12,8 +12,19 @@ namespace FireAlarm.API.Controllers
     [Route("api/[controller]")]
     public class SensorsController : BaseController<SensorsController>
     {
-        protected SensorsController(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+        public SensorsController(IUnitOfWork unitOfWork) : base(unitOfWork) { }
         
-        
+        [HttpPatch("{sensorId}")]
+        public async Task<ActionResult> Patch(long sensorId)
+        {
+            var result = await UnitOfWork.SensorsRepository.ActivateSensorAsync(sensorId);
+
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
     }
 }
