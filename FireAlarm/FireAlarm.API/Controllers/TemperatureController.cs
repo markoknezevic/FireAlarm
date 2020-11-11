@@ -36,7 +36,14 @@ namespace FireAlarm.API.Controllers
             
             if (addTemperaturePostObject.Value > sensor.TriggerTemperature)
             {
+                await UnitOfWork.AlarmsRepository.CreateAlarm(new Alarm()
+                {
+                    TemperatureValue = addTemperaturePostObject.Value.Value,
+                    SensorId = sensor.Id
+                });
+                
                 await UnitOfWork.SensorsRepository.DeactivateSensorAsync(sensor.Id);
+                
                 _mailSender.SendEmail(sensor.UserEmail);
             }
             var result = await UnitOfWork.TemperaturesRepository.AddTemperatureAsync(new Temperature()
