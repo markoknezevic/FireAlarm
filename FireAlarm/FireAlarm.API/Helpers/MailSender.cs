@@ -13,7 +13,7 @@ namespace FireAlarm.API.Helpers
         }
         
         
-        public bool SendEmail(string clientMail)
+        public bool SendEmail(string clientMail, string sensorName, double? temperatureValue)
         {
             bool response;
             
@@ -32,8 +32,8 @@ namespace FireAlarm.API.Helpers
 
             mail.IsBodyHtml = true;
             
-            mail.Subject = ("Fire Alarm Alert");
-            mail.Body = "<H2>Fire Alarm</H2>";
+            mail.Subject = ($"{sensorName} Fire Alarm Alert");
+            mail.Body = $"<H2>Fire Alarm. Measured temperature {temperatureValue} C</H2>";
             smtpclient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpclient.Credentials = new System.Net.NetworkCredential(_configuration.MailConfiguration.SenderMail, _configuration.MailConfiguration.SenderMailPassword);
             try

@@ -44,7 +44,7 @@ namespace FireAlarm.API.Controllers
                 
                 await UnitOfWork.SensorsRepository.DeactivateSensorAsync(sensor.Id);
                 
-                _mailSender.SendEmail(sensor.UserEmail);
+                _mailSender.SendEmail(sensor.UserEmail, sensor.Name, addTemperaturePostObject.Value);
             }
             var result = await UnitOfWork.TemperaturesRepository.AddTemperatureAsync(new Temperature()
             {
